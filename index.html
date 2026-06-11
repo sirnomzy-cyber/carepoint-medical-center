@@ -539,14 +539,16 @@
     .about-img-main {
       width: 100%;
       aspect-ratio: 4/5;
-      background: linear-gradient(145deg, var(--blue) 0%, var(--teal) 100%);
       border-radius: var(--radius-lg);
       overflow: hidden;
       position: relative;
     }
     .about-img-main img {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      object-position: center top;
+      display: block;
     }
     /* Abstract medical figure */
     .about-img-main .medical-art {
@@ -750,14 +752,18 @@
       background: linear-gradient(160deg, var(--ice) 0%, var(--gray-100) 100%);
       position: relative;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: block;
     }
-    .doctor-photo .avatar-placeholder {
-      font-size: 80px;
-      color: var(--blue);
-      opacity: .3;
+    .doctor-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .doctor-card:hover .doctor-photo img {
+      transform: scale(1.04);
     }
     .doctor-photo .specialty-badge {
       position: absolute;
@@ -1175,6 +1181,16 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+    }
+    .blog-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .blog-card:hover .blog-img img {
+      transform: scale(1.05);
     }
     .blog-img i { font-size: 64px; color: var(--blue); opacity: .2; }
     .blog-tag {
@@ -1676,106 +1692,7 @@
             <div class="t">Years<br>of Care</div>
           </div>
           <div class="about-img-main">
-            <!-- Real doctor photo from Unsplash -->
-            <img src="https://images.unsplash.com/photo-1584516150909-c43483ee7932?w=600&q=80" alt="Doctor at CarePoint Medical Center" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:normal;opacity:1;" />
-            <!-- invisible SVG kept for spacing only -->
-            <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none">
-              <defs>
-                <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#1B7FC4"/>
-                  <stop offset="100%" stop-color="#17B8A6"/>
-                </linearGradient>
-                <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#F5CBA7"/>
-                  <stop offset="100%" stop-color="#E59866"/>
-                </linearGradient>
-                <linearGradient id="coat" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#FDFEFE"/>
-                  <stop offset="100%" stop-color="#EBF5FB"/>
-                </linearGradient>
-              </defs>
-              <rect width="400" height="500" fill="url(#bg)"/>
-
-              <!-- Subtle dot grid -->
-              <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
-                <circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.08)"/>
-              </pattern>
-              <rect width="400" height="500" fill="url(#dots)"/>
-
-              <!-- Clipboard / chart in background -->
-              <rect x="260" y="60" width="110" height="140" rx="10" fill="rgba(255,255,255,0.12)"/>
-              <rect x="275" y="55" width="80" height="18" rx="5" fill="rgba(255,255,255,0.25)"/>
-              <rect x="272" y="90" width="86" height="8" rx="4" fill="rgba(255,255,255,0.2)"/>
-              <rect x="272" y="106" width="70" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
-              <rect x="272" y="122" width="78" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
-              <!-- Chart bars -->
-              <rect x="275" y="165" width="14" height="25" rx="3" fill="rgba(255,255,255,0.35)"/>
-              <rect x="295" y="155" width="14" height="35" rx="3" fill="rgba(255,255,255,0.5)"/>
-              <rect x="315" y="148" width="14" height="42" rx="3" fill="rgba(255,255,255,0.4)"/>
-              <rect x="335" y="160" width="14" height="30" rx="3" fill="rgba(255,255,255,0.3)"/>
-
-              <!-- Doctor body — lab coat -->
-              <ellipse cx="200" cy="480" rx="100" ry="40" fill="rgba(0,0,0,0.15)"/>
-              <!-- Coat lower -->
-              <path d="M130 310 Q120 420 110 500 L290 500 Q280 420 270 310 Z" fill="url(#coat)" opacity="0.97"/>
-              <!-- Coat lapels -->
-              <path d="M200 310 L170 350 L160 420 L200 400 L240 420 L230 350 Z" fill="rgba(27,127,196,0.08)"/>
-              <!-- Shirt / scrubs underneath -->
-              <rect x="168" y="310" width="64" height="100" rx="4" fill="#85C1E9" opacity="0.6"/>
-              <!-- Stethoscope -->
-              <path d="M175 270 Q165 310 170 340 Q175 360 190 360 Q205 360 210 340 Q215 320 210 300" stroke="rgba(0,0,0,0.25)" stroke-width="5" fill="none" stroke-linecap="round"/>
-              <circle cx="190" cy="363" r="10" fill="rgba(0,0,0,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
-              <!-- ID badge -->
-              <rect x="188" y="330" width="40" height="28" rx="5" fill="rgba(27,127,196,0.7)"/>
-              <rect x="193" y="335" width="30" height="5" rx="2" fill="rgba(255,255,255,0.7)"/>
-              <rect x="193" y="343" width="22" height="4" rx="2" fill="rgba(255,255,255,0.4)"/>
-              <!-- Arms -->
-              <path d="M130 310 Q110 360 108 400 Q106 420 120 420 Q132 420 136 400 Q142 370 148 340 Z" fill="url(#coat)"/>
-              <path d="M270 310 Q290 360 292 400 Q294 420 280 420 Q268 420 264 400 Q258 370 252 340 Z" fill="url(#coat)"/>
-              <!-- Hands -->
-              <ellipse cx="118" cy="425" rx="16" ry="12" fill="url(#skin)"/>
-              <ellipse cx="282" cy="425" rx="16" ry="12" fill="url(#skin)"/>
-              <!-- Clipboard in hand -->
-              <rect x="288" y="390" width="54" height="70" rx="6" fill="white" opacity="0.9"/>
-              <rect x="306" y="386" width="20" height="10" rx="3" fill="white" opacity="0.9"/>
-              <rect x="295" y="405" width="40" height="5" rx="2" fill="#1B7FC4" opacity="0.5"/>
-              <rect x="295" y="416" width="32" height="5" rx="2" fill="#1B7FC4" opacity="0.35"/>
-              <rect x="295" y="427" width="36" height="5" rx="2" fill="#1B7FC4" opacity="0.35"/>
-              <rect x="295" y="438" width="28" height="5" rx="2" fill="#1B7FC4" opacity="0.25)"/>
-
-              <!-- Neck -->
-              <rect x="187" y="220" width="26" height="50" rx="8" fill="url(#skin)"/>
-              <!-- Head -->
-              <ellipse cx="200" cy="185" rx="58" ry="68" fill="url(#skin)"/>
-              <!-- Hair -->
-              <path d="M142 165 Q148 108 200 105 Q252 108 258 165 Q256 140 200 136 Q144 140 142 165Z" fill="#2C3E50"/>
-              <!-- Ears -->
-              <ellipse cx="142" cy="192" rx="9" ry="13" fill="url(#skin)"/>
-              <ellipse cx="258" cy="192" rx="9" ry="13" fill="url(#skin)"/>
-              <!-- Eyes -->
-              <ellipse cx="182" cy="190" rx="10" ry="8" fill="white"/>
-              <ellipse cx="218" cy="190" rx="10" ry="8" fill="white"/>
-              <circle cx="184" cy="191" r="5" fill="#2C3E50"/>
-              <circle cx="220" cy="191" r="5" fill="#2C3E50"/>
-              <circle cx="185" cy="189" r="2" fill="white"/>
-              <circle cx="221" cy="189" r="2" fill="white"/>
-              <!-- Eyebrows -->
-              <path d="M172 178 Q182 174 192 178" stroke="#2C3E50" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <path d="M208 178 Q218 174 228 178" stroke="#2C3E50" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <!-- Nose -->
-              <path d="M197 200 Q194 212 196 218 Q200 222 204 218 Q206 212 203 200" stroke="#C8956C" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <!-- Smile -->
-              <path d="M185 232 Q200 245 215 232" stroke="#C8956C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-
-              <!-- Medical cross badge top-right of image -->
-              <rect x="20" y="20" width="52" height="52" rx="12" fill="rgba(255,255,255,0.18)"/>
-              <rect x="38" y="28" width="16" height="36" rx="4" fill="white" opacity="0.8"/>
-              <rect x="28" y="38" width="36" height="16" rx="4" fill="white" opacity="0.8"/>
-
-              <!-- Heartbeat line bottom -->
-              <polyline points="20,460 60,460 75,435 90,480 105,448 120,460 160,460 175,448 190,472 205,448 220,460 380,460"
-                stroke="rgba(255,255,255,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <img src="https://images.unsplash.com/photo-1584516150909-c43483ee7932?w=800&q=85" alt="Doctor at CarePoint Medical Center" />
           </div>
           <div class="about-floating-card">
             <div class="card-icon-wrap"><i class="fas fa-shield-halved"></i></div>
@@ -1919,54 +1836,7 @@
         <!-- Doctor 2 -->
         <div class="doctor-card reveal reveal-delay-1">
           <div class="doctor-photo">
-            <!-- Dr. Sarah Williams portrait -->
-            <svg viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-              <defs>
-                <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E8F8F5"/><stop offset="100%" stop-color="#D0F0EA"/></linearGradient>
-                <linearGradient id="sk2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FDEBD0"/><stop offset="100%" stop-color="#E9D5BB"/></linearGradient>
-              </defs>
-              <rect width="240" height="280" fill="url(#bg2)"/>
-              <!-- Coat -->
-              <path d="M55 225 Q48 280 44 310 L196 310 Q192 280 185 225 Z" fill="white"/>
-              <!-- Scrubs -->
-              <rect x="96" y="223" width="48" height="80" rx="4" fill="#17A589" opacity="0.65"/>
-              <!-- Stethoscope -->
-              <path d="M108 192 Q98 212 100 230 Q103 243 120 243 Q137 243 140 230 Q142 212 132 192" stroke="#999" stroke-width="4" fill="none" stroke-linecap="round"/>
-              <circle cx="120" cy="246" r="7" fill="#555" stroke="white" stroke-width="1.5"/>
-              <!-- Arms -->
-              <path d="M55 225 Q42 252 40 272 Q38 286 50 286 Q62 286 64 270 Q68 250 74 228 Z" fill="white"/>
-              <path d="M185 225 Q198 252 200 272 Q202 286 190 286 Q178 286 176 270 Q172 250 166 228 Z" fill="white"/>
-              <ellipse cx="46" cy="289" rx="11" ry="8" fill="url(#sk2)"/>
-              <ellipse cx="194" cy="289" rx="11" ry="8" fill="url(#sk2)"/>
-              <!-- Neck -->
-              <rect x="112" y="158" width="18" height="34" rx="6" fill="url(#sk2)"/>
-              <!-- Head -->
-              <ellipse cx="121" cy="128" rx="46" ry="54" fill="url(#sk2)"/>
-              <!-- Long hair -->
-              <path d="M75 115 Q78 65 121 62 Q164 65 167 115 Q165 75 121 72 Q77 75 75 115Z" fill="#5D4037"/>
-              <path d="M75 115 Q68 155 70 195 Q72 210 80 210 Q86 195 84 175 Q82 155 84 130 Z" fill="#5D4037"/>
-              <path d="M167 115 Q174 155 172 195 Q170 210 162 210 Q156 195 158 175 Q160 155 158 130 Z" fill="#5D4037"/>
-              <!-- Ears -->
-              <ellipse cx="75" cy="134" rx="7" ry="10" fill="url(#sk2)"/>
-              <ellipse cx="167" cy="134" rx="7" ry="10" fill="url(#sk2)"/>
-              <!-- Eyes -->
-              <ellipse cx="106" cy="132" rx="9" ry="7" fill="white"/>
-              <ellipse cx="136" cy="132" rx="9" ry="7" fill="white"/>
-              <circle cx="108" cy="133" r="4.5" fill="#4A235A"/>
-              <circle cx="138" cy="133" r="4.5" fill="#4A235A"/>
-              <circle cx="109" cy="131" r="1.5" fill="white"/>
-              <circle cx="139" cy="131" r="1.5" fill="white"/>
-              <!-- Lashes -->
-              <path d="M97 128 Q106 123 115 128" stroke="#4A235A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <path d="M127 128 Q136 123 145 128" stroke="#4A235A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <!-- Nose -->
-              <path d="M118 144 Q115 153 117 157 Q121 161 125 157 Q127 153 124 144" stroke="#C8956C" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-              <!-- Lips -->
-              <path d="M110 167 Q121 175 132 167" stroke="#C0392B" stroke-width="2.2" fill="rgba(192,57,43,0.12)" stroke-linecap="round"/>
-              <!-- ID badge -->
-              <rect x="108" y="206" width="30" height="20" rx="4" fill="#17A589" opacity="0.8"/>
-              <rect x="112" y="210" width="22" height="4" rx="2" fill="white" opacity="0.7"/>
-            </svg>
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" alt="Dr. Sarah Williams — Pediatrician" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
             <div class="specialty-badge">Pediatrics</div>
           </div>
           <div class="doctor-info">
@@ -1983,60 +1853,7 @@
         <!-- Doctor 3 -->
         <div class="doctor-card reveal reveal-delay-2">
           <div class="doctor-photo">
-            <!-- Dr. David Carter portrait -->
-            <svg viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-              <defs>
-                <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FDF2F8"/><stop offset="100%" stop-color="#F5CDE8"/></linearGradient>
-                <linearGradient id="sk3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FAD7A0"/><stop offset="100%" stop-color="#E5B882"/></linearGradient>
-              </defs>
-              <rect width="240" height="280" fill="url(#bg3)"/>
-              <!-- Coat -->
-              <path d="M62 232 Q56 285 50 310 L190 310 Q184 285 178 232 Z" fill="white"/>
-              <!-- Scrubs -->
-              <rect x="98" y="230" width="44" height="75" rx="4" fill="#8E44AD" opacity="0.6"/>
-              <!-- Stethoscope -->
-              <path d="M108 196 Q98 216 100 233 Q103 246 120 246 Q137 246 140 233 Q142 216 132 196" stroke="#aaa" stroke-width="4" fill="none" stroke-linecap="round"/>
-              <circle cx="120" cy="249" r="7" fill="#666" stroke="white" stroke-width="1.5"/>
-              <!-- Arms -->
-              <path d="M62 232 Q50 258 48 278 Q46 292 58 292 Q68 292 70 276 Q74 256 80 238 Z" fill="white"/>
-              <path d="M178 232 Q190 258 192 278 Q194 292 182 292 Q172 292 170 276 Q166 256 160 238 Z" fill="white"/>
-              <ellipse cx="54" cy="295" rx="11" ry="8" fill="url(#sk3)"/>
-              <ellipse cx="186" cy="295" rx="11" ry="8" fill="url(#sk3)"/>
-              <!-- Neck -->
-              <rect x="112" y="162" width="18" height="36" rx="6" fill="url(#sk3)"/>
-              <!-- Head -->
-              <ellipse cx="121" cy="132" rx="46" ry="54" fill="url(#sk3)"/>
-              <!-- Hair — wavy medium -->
-              <path d="M75 116 Q80 68 121 66 Q162 68 167 116 Q163 88 145 84 Q133 76 121 80 Q109 76 97 84 Q79 88 75 116Z" fill="#784212"/>
-              <!-- Temples -->
-              <rect x="75" y="108" width="16" height="22" rx="4" fill="#784212"/>
-              <rect x="149" y="108" width="16" height="22" rx="4" fill="#784212"/>
-              <!-- Ears -->
-              <ellipse cx="75" cy="136" rx="7" ry="10" fill="url(#sk3)"/>
-              <ellipse cx="167" cy="136" rx="7" ry="10" fill="url(#sk3)"/>
-              <!-- Eyes -->
-              <ellipse cx="106" cy="134" rx="9" ry="7" fill="white"/>
-              <ellipse cx="136" cy="134" rx="9" ry="7" fill="white"/>
-              <circle cx="108" cy="135" r="4.5" fill="#1B2631"/>
-              <circle cx="138" cy="135" r="4.5" fill="#1B2631"/>
-              <circle cx="109" cy="133" r="1.5" fill="white"/>
-              <circle cx="139" cy="133" r="1.5" fill="white"/>
-              <path d="M97 124 Q106 120 115 124" stroke="#5D4037" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <path d="M127 124 Q136 120 145 124" stroke="#5D4037" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <!-- Nose -->
-              <path d="M118 146 Q115 155 117 159 Q121 163 125 159 Q127 155 124 146" stroke="#C8956C" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-              <!-- Smile -->
-              <path d="M111 170 Q121 179 131 170" stroke="#C8956C" stroke-width="2" fill="none" stroke-linecap="round"/>
-              <!-- Glasses -->
-              <rect x="95" y="127" width="22" height="16" rx="7" fill="none" stroke="#444" stroke-width="2"/>
-              <rect x="123" y="127" width="22" height="16" rx="7" fill="none" stroke="#444" stroke-width="2"/>
-              <line x1="117" y1="135" x2="123" y2="135" stroke="#444" stroke-width="2"/>
-              <line x1="75" y1="133" x2="95" y2="133" stroke="#444" stroke-width="1.5"/>
-              <line x1="145" y1="133" x2="165" y2="133" stroke="#444" stroke-width="1.5"/>
-              <!-- ID badge -->
-              <rect x="108" y="212" width="30" height="20" rx="4" fill="#8E44AD" opacity="0.75"/>
-              <rect x="112" y="216" width="22" height="4" rx="2" fill="white" opacity="0.7"/>
-            </svg>
+            <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&q=80" alt="Dr. David Carter — Dermatologist" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
             <div class="specialty-badge">Dermatology</div>
           </div>
           <div class="doctor-info">
@@ -2053,62 +1870,7 @@
         <!-- Doctor 4 -->
         <div class="doctor-card reveal reveal-delay-3">
           <div class="doctor-photo">
-            <!-- Dr. Emily Brown portrait -->
-            <svg viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-              <defs>
-                <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EBF5FB"/><stop offset="100%" stop-color="#D6EAF8"/></linearGradient>
-                <linearGradient id="sk4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#FDEBD0"/><stop offset="100%" stop-color="#EDBB99"/></linearGradient>
-              </defs>
-              <rect width="240" height="280" fill="url(#bg4)"/>
-              <!-- Coat -->
-              <path d="M58 228 Q50 282 44 310 L196 310 Q190 282 182 228 Z" fill="white"/>
-              <!-- Scrubs -->
-              <rect x="97" y="226" width="46" height="78" rx="4" fill="#1B7FC4" opacity="0.65"/>
-              <!-- Stethoscope -->
-              <path d="M108 192 Q98 214 100 232 Q103 245 120 245 Q137 245 140 232 Q142 214 132 192" stroke="#aaa" stroke-width="4" fill="none" stroke-linecap="round"/>
-              <circle cx="120" cy="248" r="7" fill="#555" stroke="white" stroke-width="1.5"/>
-              <!-- Arms -->
-              <path d="M58 228 Q45 255 43 276 Q41 290 53 290 Q64 290 66 274 Q70 254 76 232 Z" fill="white"/>
-              <path d="M182 228 Q195 255 197 276 Q199 290 187 290 Q176 290 174 274 Q170 254 164 232 Z" fill="white"/>
-              <ellipse cx="49" cy="293" rx="11" ry="8" fill="url(#sk4)"/>
-              <ellipse cx="191" cy="293" rx="11" ry="8" fill="url(#sk4)"/>
-              <!-- Neck -->
-              <rect x="112" y="158" width="18" height="36" rx="6" fill="url(#sk4)"/>
-              <!-- Head -->
-              <ellipse cx="121" cy="127" rx="46" ry="53" fill="url(#sk4)"/>
-              <!-- Hair — bun/up style -->
-              <path d="M75 110 Q80 64 121 62 Q162 64 167 110 Q163 80 121 78 Q79 80 75 110Z" fill="#CB4335"/>
-              <rect x="75" y="102" width="92" height="18" rx="5" fill="#CB4335"/>
-              <ellipse cx="121" cy="68" rx="24" ry="18" fill="#CB4335"/>
-              <!-- Side hair -->
-              <path d="M75 110 Q70 130 72 155 Q74 165 80 162 Q84 150 82 130 Q80 115 78 108Z" fill="#CB4335"/>
-              <path d="M167 110 Q172 130 170 155 Q168 165 162 162 Q158 150 160 130 Q162 115 164 108Z" fill="#CB4335"/>
-              <!-- Ears -->
-              <ellipse cx="75" cy="132" rx="7" ry="10" fill="url(#sk4)"/>
-              <ellipse cx="167" cy="132" rx="7" ry="10" fill="url(#sk4)"/>
-              <!-- Earrings -->
-              <circle cx="75" cy="144" r="3.5" fill="#F7DC6F"/>
-              <circle cx="167" cy="144" r="3.5" fill="#F7DC6F"/>
-              <!-- Eyes -->
-              <ellipse cx="106" cy="131" rx="9" ry="7" fill="white"/>
-              <ellipse cx="136" cy="131" rx="9" ry="7" fill="white"/>
-              <circle cx="108" cy="132" r="4.5" fill="#1A5276"/>
-              <circle cx="138" cy="132" r="4.5" fill="#1A5276"/>
-              <circle cx="109" cy="130" r="1.5" fill="white"/>
-              <circle cx="139" cy="130" r="1.5" fill="white"/>
-              <path d="M97 122 Q106 118 115 122" stroke="#922B21" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <path d="M127 122 Q136 118 145 122" stroke="#922B21" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-              <!-- Nose -->
-              <path d="M118 143 Q115 152 117 156 Q121 160 125 156 Q127 152 124 143" stroke="#C8956C" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-              <!-- Lips -->
-              <path d="M111 166 Q121 174 131 166" stroke="#C0392B" stroke-width="2.2" fill="rgba(192,57,43,0.1)" stroke-linecap="round"/>
-              <!-- Cheek blush -->
-              <ellipse cx="97" cy="148" rx="10" ry="6" fill="rgba(231,76,60,0.1)"/>
-              <ellipse cx="145" cy="148" rx="10" ry="6" fill="rgba(231,76,60,0.1)"/>
-              <!-- ID badge -->
-              <rect x="108" y="208" width="30" height="20" rx="4" fill="#1B7FC4" opacity="0.8"/>
-              <rect x="112" y="212" width="22" height="4" rx="2" fill="white" opacity="0.7"/>
-            </svg>
+            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80" alt="Dr. Emily Brown — General Practitioner" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
             <div class="specialty-badge">General Medicine</div>
           </div>
           <div class="doctor-info">
@@ -2410,8 +2172,8 @@
 
       <div class="blog-grid">
         <div class="blog-card reveal">
-          <div class="blog-img">
-            <i class="fas fa-heart-pulse"></i>
+          <div class="blog-img" style="padding:0;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?w=600&q=80" alt="Heart disease warning signs" style="width:100%;height:100%;object-fit:cover;display:block;" />
             <span class="blog-tag">Cardiology</span>
           </div>
           <div class="blog-content">
@@ -2423,8 +2185,8 @@
         </div>
 
         <div class="blog-card reveal reveal-delay-1">
-          <div class="blog-img">
-            <i class="fas fa-apple-whole"></i>
+          <div class="blog-img" style="padding:0;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt="Anti-inflammatory diet healthy food" style="width:100%;height:100%;object-fit:cover;display:block;" />
             <span class="blog-tag">Nutrition</span>
           </div>
           <div class="blog-content">
@@ -2436,8 +2198,8 @@
         </div>
 
         <div class="blog-card reveal reveal-delay-2">
-          <div class="blog-img">
-            <i class="fas fa-baby"></i>
+          <div class="blog-img" style="padding:0;overflow:hidden;">
+            <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=600&q=80" alt="Child vaccination pediatrics" style="width:100%;height:100%;object-fit:cover;display:block;" />
             <span class="blog-tag">Pediatrics</span>
           </div>
           <div class="blog-content">
